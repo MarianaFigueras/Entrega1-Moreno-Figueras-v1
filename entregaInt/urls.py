@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import hola
+from . import views
 
 urlpatterns = [
     path('hola/', hola),
+    path('mi-template/', views.mi_template),
+    path('mi-template/<str:nombre>', views.tu_template),
     path('admin/', admin.site.urls),
 ]
