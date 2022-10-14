@@ -11,7 +11,7 @@ def hola(request):
 
 def mi_template(request):
     
-    cargar_archivo = open(r'C:\Users\mariana figueras\Desktop\Código\Proyecto Grupal\templates\mi_template.html', 'r')
+    cargar_archivo = open(r'C:\Users\mariana figueras\Desktop\Código\Proyecto Grupal\home\templates\mi_template.html', 'r')
     template = Template(cargar_archivo.read())
     cargar_archivo.close()
     contexto = Context()
@@ -28,7 +28,7 @@ def tu_template(request, nombre):
     # template_renderizado = template.render(contexto)
     
 
-    template = loader.get_template('tu_template.html')
+    template = loader.get_template('home/tu_template.html')
     template_renderizado = template.render({'pedido': nombre})
         
     return HttpResponse(template_renderizado)
@@ -41,7 +41,7 @@ def crear_pedido(request, nombre, guarnicion):
     # template_renderizado = template.render({'pedido': pedido})
 
     # return HttpResponse(template_renderizado)
-    return render(request, 'crear_pedido.html', {'pedido' : pedido})
+    return render(request, 'home/crear_pedido.html', {'pedido' : pedido})
 
 def ver_pedidos(request):
     pedidos= Pedido.objects.all()
@@ -50,5 +50,7 @@ def ver_pedidos(request):
     # template_renderizado = template.render({'pedido': pedidos})
     
     # return HttpResponse(template_renderizado)
-    return render(request, 'ver_pedidos.html', {'pedidos': pedidos})
+    return render(request, 'home/ver_pedidos.html', {'pedidos': pedidos})
 
+def index(request):
+    return render(request, 'home/index.html')
