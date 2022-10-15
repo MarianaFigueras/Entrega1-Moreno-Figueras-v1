@@ -10,9 +10,26 @@ Registro de pedidos
 {%endblock h1_texto_header %}
 
 {% block index_contenido%}
-<p> Aun no hay pedidos cargados </p>
+<a class="navbar-brand" href={% url 'crear_pedido' %}>Crear Pedido</a>
+<p> Listado de pedidos: </p>
+
+<form action={% url "ver_pedidos" %} method="GET">
+        
+    {{formulario}}
+   
+    <button>Buscar</button>
+</form>
+
+<p>
+{% if pedidos %}
+
 {% for pedido in pedidos%}
 <li>{{pedido.nombre}} {{pedido.guarnicion}} {{pedido.cant_porciones}}{{pedido.fecha_pedido}}</li>    
 {%endfor%}
+
+{% else %}
+        <p>No hay pedidos que coincidan con la busqueda.</p>
+{% endif %}
+</p>
 
 {% endblock index_contenido%}

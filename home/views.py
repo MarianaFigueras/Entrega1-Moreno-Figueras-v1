@@ -4,7 +4,8 @@ from datetime import datetime
 from django.template import Context, Template, loader
 import random
 from home.models import Pedido
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from home.forms import PedidoFormulario, BusquedaPedidoFormulario
 
 def hola(request):
     return HttpResponse('<h1> Bienvenido </h1>')
@@ -33,24 +34,36 @@ def tu_template(request, nombre):
         
     return HttpResponse(template_renderizado)
 
-def crear_pedido(request, nombre, guarnicion):
+def crear_pedido(request):
+    formulario = PedidoFormulario(request.POST)
+        
+    if formulario.is_valid():
+        data = formulario.cleaned_data
+          
+        nombre = data ['nombre']
+        guarnicion = data ['guarnicion']
+        cant_porciones = data['cant_porciones']
+        fecha_pedido = data.get('fecha_pedido', datetime.now())
+        pedido= Pedido(nombre=nombre, guarnicion=guarnicion, cant_porciones=cant_porciones, fecha_pedido=fecha_pedido)
+        pedido.save()
+        
+        return redirect('ver_pedidos')
+    formulario = PedidoFormulario()
+    return render(request, 'home/crear_pedido.html', {'formulario': formulario})
     
-    pedido= Pedido(nombre=nombre, guarnicion=guarnicion, cant_porciones=random.randrange(1,99), fecha_pedido=datetime.now())
-    # pedido.save()
-    # template = loader.get_template('crear_pedido.html')
-    # template_renderizado = template.render({'pedido': pedido})
-
-    # return HttpResponse(template_renderizado)
-    return render(request, 'home/crear_pedido.html', {'pedido' : pedido})
-
+    
 def ver_pedidos(request):
-    pedidos= Pedido.objects.all()
     
-    # template = loader.get_template('ver_pedidos.html')
-    # template_renderizado = template.render({'pedido': pedidos})
+    nombre = request.GET.get('nombre', None)
     
-    # return HttpResponse(template_renderizado)
-    return render(request, 'home/ver_pedidos.html', {'pedidos': pedidos})
+    if nombre:
+        pedidos = Pedido.objects.filter(nombre__icontains=nombre)
+    else:
+        pedidos = Pedido.objects.all()
+       
+    formulario= BusquedaPedidoFormulario()
+    
+    return render(request, 'home/ver_pedidos.html', {'pedidos': pedidos, 'formulario':formulario})
 
 def index(request):
     return render(request, 'home/index.html')
