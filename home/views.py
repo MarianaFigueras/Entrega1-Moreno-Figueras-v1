@@ -10,29 +10,29 @@ from home.forms import PedidoFormulario, BusquedaPedidoFormulario
 def hola(request):
     return HttpResponse('<h1> Bienvenido </h1>')
 
-def mi_template(request):
+# def mi_template(request):
     
-    cargar_archivo = open(r'C:\Users\mariana figueras\Desktop\Código\Proyecto Grupal\home\templates\mi_template.html', 'r')
-    template = Template(cargar_archivo.read())
-    cargar_archivo.close()
-    contexto = Context()
-    template_renderizado = template.render(contexto)
+#     cargar_archivo = open(r'C:\Users\mariana figueras\Desktop\Código\Proyecto Grupal\home\templates\mi_template.html', 'r')
+#     template = Template(cargar_archivo.read())
+#     cargar_archivo.close()
+#     contexto = Context()
+#     template_renderizado = template.render(contexto)
         
-    return HttpResponse(template_renderizado)
+#     return HttpResponse(template_renderizado)
 
-def tu_template(request, nombre):
+# def tu_template(request, nombre):
     
-    # cargar_archivo = open(r'C:\Users\mariana figueras\Desktop\Código\Proyecto Grupal\templates\tu_template.html', 'r')
-    # template = Template(cargar_archivo.read())
-    # cargar_archivo.close()
-    # contexto = Context({'pedido':nombre})
-    # template_renderizado = template.render(contexto)
+#     # cargar_archivo = open(r'C:\Users\mariana figueras\Desktop\Código\Proyecto Grupal\templates\tu_template.html', 'r')
+#     # template = Template(cargar_archivo.read())
+#     # cargar_archivo.close()
+#     # contexto = Context({'pedido':nombre})
+#     # template_renderizado = template.render(contexto)
     
 
-    template = loader.get_template('home/tu_template.html')
-    template_renderizado = template.render({'pedido': nombre})
+#     template = loader.get_template('home/tu_template.html')
+#     template_renderizado = template.render({'pedido': nombre})
         
-    return HttpResponse(template_renderizado)
+#     return HttpResponse(template_renderizado)
 
 def crear_pedido(request):
     formulario = PedidoFormulario(request.POST)
