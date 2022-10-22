@@ -43,7 +43,8 @@ def crear_pedido(request):
         nombre = data ['nombre']
         guarnicion = data ['guarnicion']
         cant_porciones = data['cant_porciones']
-        fecha_pedido = data.get('fecha_pedido', datetime.now())
+        fecha_pedido = data['fecha_pedido'] or datetime.now()
+        
         pedido= Pedido(nombre=nombre, guarnicion=guarnicion, cant_porciones=cant_porciones, fecha_pedido=fecha_pedido)
         pedido.save()
         
