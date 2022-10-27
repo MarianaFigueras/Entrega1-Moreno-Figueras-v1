@@ -4,7 +4,7 @@ from home import views
 
 urlpatterns = [
     path('', views.index, name= 'index'),
-    path('hola/',views.hola, name='hola'),
+    # path('hola/',views.hola, name='hola'),
     path('about', views.about, name='about'),
     # path('mi-template/', views.mi_template, name='mi_template'),
     # path('mi-template/<str:nombre>', views.tu_template),

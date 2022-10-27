@@ -24,7 +24,7 @@ Registro de pedidos
 {% if pedidos %}
 
 {% for pedido in pedidos%}
-<li>{{pedido.nombre}} {{pedido.guarnicion}} {{pedido.cant_porciones}}{{pedido.fecha_pedido}}</li>    
+<li>{{pedido.nombre}} - {{pedido.guarnicion}} - {{pedido.cant_porciones}} - {{pedido.fecha_pedido}}</li>    
 {%endfor%}
 
 {% else %}

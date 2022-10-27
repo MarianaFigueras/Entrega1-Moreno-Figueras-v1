@@ -7,8 +7,8 @@ from home.models import Pedido
 from django.shortcuts import render, redirect
 from home.forms import PedidoFormulario, BusquedaPedidoFormulario
 
-def hola(request):
-    return HttpResponse('<h1> Bienvenido </h1>')
+# def hola(request):
+#     return HttpResponse('<h1> Bienvenido </h1>')
 
 # def mi_template(request):
     
@@ -49,6 +49,7 @@ def crear_pedido(request):
         pedido.save()
         
         return redirect('ver_pedidos')
+   
     formulario = PedidoFormulario()
     return render(request, 'home/crear_pedido.html', {'formulario': formulario})
     
