@@ -1,32 +1,31 @@
 {% extends 'home/base.html' %}
 
-
 {%block title_pagina%}
 <title> Ver platos </title>
 {%endblock title_pagina%}
-
 
 {% block mi_contenido%}
 <a class="navbar-brand" href={% url 'crear_plato' %}>Crear Plato</a>
 <p> Listado de platos: </p>
 
 {% comment %} <form action={% url "ver_platos" %} method="GET">
-        
     {{formulario}}
-   
     <button>Buscar</button>
 </form> {% endcomment %}
 
 <p>
-{% if platos %}
+    {% if platos %}
 
-{% for plato in platos%}
-<li>{{plato.tipo_plato}} - {{plato.nombre_plato}} - {{plato.descripcion}} - {{plato.precio}} - {{plato.fecha_creacion}}</li>    
-{%endfor%}
+        {% for plato in platos%}
+            <li>
+                {{plato.tipo_plato}} - {{plato.nombre_plato}} - {{plato.precio}}
+                <a href={% url 'editar_plato' plato.id %}>Editar</a>
+                <a href={% url 'eliminar_plato' plato.id %}>Eliminar</a>
+            </li>
+        {%endfor%}
 
-{% else %}
-        <p>No hay menu semanal creado hasta el momento o que coincidan con la busqueda realizada.</p>
-{% endif %}
+    {% else %}
+        <p>No hay menu semanal creado hasta el momento o items que coincidan con la busqueda realizada.</p>
+    {% endif %}
 </p>
-
 {% endblock mi_contenido%}
