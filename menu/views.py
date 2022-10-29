@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 from menu.models import Plato
 from menu.forms import PlatoFormulario
 
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -13,11 +16,11 @@ def ver_platos(request):
     
     return render(request, 'menu/ver_platos.html', {'platos': platos})
 
-
+@login_required
 def crear_plato(request):
     
     if request.method =='POST':
-        formulario = PlatoFormulario(request.POST)
+        formulario = PlatoFormulario(request.POST, request.FILES)
         
         if formulario.is_valid():
             datos = formulario.cleaned_data
@@ -27,7 +30,8 @@ def crear_plato(request):
                 nombre_plato=datos['nombre_plato'],
                 precio=datos ['precio'],
                 # descripcion=datos ['descripcion'],
-                fecha_creacion=datos ['fecha_creacion']
+                fecha_creacion=datos ['fecha_creacion'],
+                imagen=datos ['imagen']
             )
             plato.save()
             return redirect('ver_platos')
@@ -49,15 +53,21 @@ def crear_plato(request):
 #     template_name = 'menu/crear_plato_cbv.html'
 #     fields = ['tipo_plato', 'nombre_plato', 'precio', 'fecha_creacion']
 
-class EditarPlato(UpdateView):
+
+class EditarPlato(LoginRequiredMixin, UpdateView):
     model = Plato
     success_url = '/menu/menu/'
     template_name = 'menu/editar_plato_cbv.html'
     fields = ['tipo_plato', 'nombre_plato', 'precio', 'fecha_creacion']
     
     
-class EliminarPlato(DeleteView):
+class EliminarPlato(LoginRequiredMixin, DeleteView):
     model = Plato
     success_url = '/menu/menu/'
     template_name = 'menu/eliminar_plato_cbv.html'
+    
+class VerPlato(DetailView):
+    model = Plato
+    template_name = 'menu/ver_plato.html'
+    
 

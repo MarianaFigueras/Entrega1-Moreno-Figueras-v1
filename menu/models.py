@@ -1,3 +1,4 @@
+from msilib.schema import Upgrade
 from django.db import models
 from ckeditor.fields import RichTextField
 
@@ -8,7 +9,9 @@ class Plato(models.Model):
     descripcion=RichTextField(null=True)
     precio=models.IntegerField()
     fecha_creacion=models.DateField(null=True)
+    autor=models.CharField(max_length=50,null=True)
+    imagen=models.ImageField(upload_to='avatares',null=True, blank=True)
     
     def __str__(self):
-        return f'Tipo: {self.tipo_plato} - Nombre: {self.nombre_plato}'
+        return f'Tipo: {self.tipo_plato} - Nombre: {self.nombre_plato} - Precio: {self.precio}'
 

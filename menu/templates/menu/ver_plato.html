@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+
+{%block title_pagina%}
+<title> Plato </title>
+{%endblock title_pagina%}
+
+{% block mi_contenido%}
+<p>
+    <li>Tipo de plato: {{plato.tipo_plato}}</li>
+    <li>Nombre: {{plato.nombre_plato}}</li>
+    <li>Precio: {{plato.precio}}</li>
+    <li>Fecha de creacion: {{plato.fecha_creacion}}</li>
+    <li>Autor: {{plato.autor}}</li>
+</p>
+{% endblock mi_contenido%}

@@ -18,7 +18,8 @@
 
         {% for plato in platos%}
             <li>
-                {{plato.tipo_plato}} - {{plato.nombre_plato}} - {{plato.precio}}
+                {{plato}}
+                <a href={% url 'ver_plato' plato.id %}>Detalle</a>
                 <a href={% url 'editar_plato' plato.id %}>Editar</a>
                 <a href={% url 'eliminar_plato' plato.id %}>Eliminar</a>
             </li>

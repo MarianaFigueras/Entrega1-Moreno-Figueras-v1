@@ -1,3 +1,6 @@
+integrantes del grupo: 
+Luis Moreno - Mariana Figueras
+Instrucciones:
 Levantar servicio: clonar y activar entorno virtual . venv/Scripts/activate
 Se accede al home de una pagina para el registro de pedidos de un resto
 Navegar a pestaña 'ver pedidos', en principio no hay pedidos cargados

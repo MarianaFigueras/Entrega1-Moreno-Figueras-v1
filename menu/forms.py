@@ -7,3 +7,5 @@ class PlatoFormulario(forms.Form):
     # descripcion=RichTextFormField(required=False)
     precio=forms.IntegerField()
     fecha_creacion=forms.DateField(required=False)
+    autor=forms.CharField(max_length=50)
+    imagen = forms.ImageField(required=False)

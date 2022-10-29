@@ -10,6 +10,7 @@ urlpatterns = [
     # path('menu/', views.ListaPlatos.as_view(), name='ver_platos'),
     # path('menu/crear/', views.CrearPlato.as_view(), name='crear_plato'),
     path('menu/editar/<int:pk>', views.EditarPlato.as_view(), name='editar_plato'),
-    path('menu/eliminar/<int:pk>', views.EliminarPlato.as_view(), name='eliminar_plato')
+    path('menu/eliminar/<int:pk>', views.EliminarPlato.as_view(), name='eliminar_plato'),
+    path('menu/pages/<int:pk>', views.VerPlato.as_view(), name='ver_plato')
     
 ]
