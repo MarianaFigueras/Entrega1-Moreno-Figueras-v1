@@ -9,6 +9,7 @@
 <form action={% url "crear_plato" %} method="POST" enctype='multipart/form-data'>
     {% csrf_token %}
     <table>
+    {{formulario.media}}
     {{formulario}}
     </table>
     <button>Crear</button>

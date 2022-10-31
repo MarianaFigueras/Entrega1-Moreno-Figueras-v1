@@ -29,8 +29,9 @@ def crear_plato(request):
                 tipo_plato=datos['tipo_plato'],
                 nombre_plato=datos['nombre_plato'],
                 precio=datos ['precio'],
-                # descripcion=datos ['descripcion'],
+                descripcion=datos ['descripcion'],
                 fecha_creacion=datos ['fecha_creacion'],
+                autor=datos ['autor'],
                 imagen=datos ['imagen']
             )
             plato.save()
@@ -58,7 +59,7 @@ class EditarPlato(LoginRequiredMixin, UpdateView):
     model = Plato
     success_url = '/menu/menu/'
     template_name = 'menu/editar_plato_cbv.html'
-    fields = ['tipo_plato', 'nombre_plato', 'precio', 'fecha_creacion']
+    fields = ['tipo_plato', 'nombre_plato', 'precio', 'autor', 'fecha_creacion', 'imagen', 'descripcion']
     
     
 class EliminarPlato(LoginRequiredMixin, DeleteView):
