@@ -1,0 +1,13 @@
+{% extends 'home/base.html' %}
+
+{%block title_pagina%}
+<title>Perfil</title>
+{%endblock title_pagina%}
+
+{% block mi_contenido%}
+<a class="navbar-brand" href={% url 'index' %}>Index</a>
+<h1>Informacion Usuario</h1>
+<li>Nombre:{{request.user.first_name}}</li>
+<li>Apellido:{{request.user.last_name}}</li>
+<li>Email:{{request.user.email}}</li>
+{% endblock mi_contenido%}

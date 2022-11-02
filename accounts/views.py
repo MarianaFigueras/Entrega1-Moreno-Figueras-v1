@@ -29,3 +29,7 @@ def registrar(request):
         formulario = MiFormularioDeCreacion()
     
     return render(request, 'accounts/registrar.html', {'formulario': formulario})
+
+def perfil(request):
+    
+    return render(request, 'accounts/perfil.html', {})
