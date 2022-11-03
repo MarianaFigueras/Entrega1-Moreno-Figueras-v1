@@ -9,3 +9,6 @@ class PlatoFormulario(forms.Form):
     autor=forms.CharField(max_length=50)
     imagen = forms.ImageField(required=False)
     descripcion=RichTextFormField(required=False)
+    
+class BusquedaPlatoFormulario(forms.Form):
+    tipo_plato=forms.CharField(max_length=50, required=False)

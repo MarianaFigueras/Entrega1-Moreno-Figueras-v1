@@ -8,10 +8,10 @@
 <a class="navbar-brand" href={% url 'crear_plato' %}>Crear Plato</a>
 <p> Listado de platos: </p>
 
-{% comment %} <form action={% url "ver_platos" %} method="GET">
+<form action={% url "ver_platos" %} method="GET">
     {{formulario}}
     <button>Buscar</button>
-</form> {% endcomment %}
+</form>
 
 <p>
     {% if platos %}

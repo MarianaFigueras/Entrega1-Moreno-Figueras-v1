@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from menu.models import Plato
-from menu.forms import PlatoFormulario
+from menu.forms import PlatoFormulario, BusquedaPlatoFormulario
 
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -11,9 +11,16 @@ from django.contrib.auth.decorators import login_required
 
 def ver_platos(request):
     
-    platos = Plato.objects.all()
+    tipo_plato = request.GET.get('tipo_plato', None)
     
-    return render(request, 'menu/ver_platos.html', {'platos': platos})
+    if tipo_plato:
+        platos = Plato.objects.filter(tipo_plato__icontains=tipo_plato)
+    else:
+        platos = Plato.objects.all()
+    
+    formulario= BusquedaPlatoFormulario()
+    
+    return render(request, 'menu/ver_platos.html', {'platos': platos, 'formulario':formulario})
 
 @login_required
 def crear_plato(request):
@@ -58,7 +65,7 @@ class EditarPlato(LoginRequiredMixin, UpdateView):
     model = Plato
     success_url = '/menu/menu/'
     template_name = 'menu/editar_plato_cbv.html'
-    fields = ['tipo_plato', 'nombre_plato', 'precio', 'autor', 'fecha_creacion', 'imagen', 'descripcion']
+    fields = ['tipo_plato', 'nombre_plato', 'precio', 'autor', 'fecha_creacion', 'descripcion', 'imagen']
     
     
 class EliminarPlato(LoginRequiredMixin, DeleteView):

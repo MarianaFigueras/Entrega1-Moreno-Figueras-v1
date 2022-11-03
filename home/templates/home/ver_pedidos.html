@@ -21,15 +21,19 @@ Registro de pedidos
 </form>
 
 <p>
-{% if pedidos %}
+    {% if pedidos %}
 
-{% for pedido in pedidos%}
-<li>{{pedido.nombre}} - {{pedido.guarnicion}} - {{pedido.cant_porciones}} - {{pedido.fecha_pedido}}</li>    
-{%endfor%}
+        {% for pedido in pedidos%}
+            <li>{{pedido.nombre}} - {{pedido.guarnicion}} - {{pedido.cant_porciones}} - {{pedido.fecha_pedido}}</li>    
+                <a href={% url 'eliminar_pedido' pedido.id %}>Eliminar</a>
+            </li>
+        {%endfor%}
 
-{% else %}
+    {% else %}
         <p>No hay pedidos creados hasta el momento o que coincidan con la busqueda realizada.</p>
-{% endif %}
+    {% endif %}
 </p>
 
 {% endblock index_contenido%}
+
+

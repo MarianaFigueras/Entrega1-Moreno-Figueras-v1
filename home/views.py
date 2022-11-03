@@ -7,6 +7,8 @@ from home.models import Pedido
 from django.shortcuts import render, redirect
 from home.forms import PedidoFormulario, BusquedaPedidoFormulario
 from django.views.generic import ListView
+from django.views.generic.edit import DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # def hola(request):
 #     return HttpResponse('<h1> Bienvenido </h1>')
@@ -73,4 +75,9 @@ def index(request):
 
 def about(request):
     return render(request, 'home/about_us.html')
+
+class EliminarPedido(LoginRequiredMixin, DeleteView):
+    model = Pedido
+    success_url = '/ver-pedidos'
+    template_name = 'home/eliminar_pedido_cbv.html'
 

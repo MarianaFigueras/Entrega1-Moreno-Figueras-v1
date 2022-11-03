@@ -13,4 +13,5 @@ urlpatterns = [
     path('menu/eliminar/<int:pk>', views.EliminarPlato.as_view(), name='eliminar_plato'),
     path('menu/pages/<int:pk>', views.VerPlato.as_view(), name='ver_plato')
     
+    
 ]
