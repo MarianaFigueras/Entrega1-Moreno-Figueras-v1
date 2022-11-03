@@ -1,16 +1,16 @@
 {% extends 'home/base.html' %}
 
 {%block title_pagina%}
-<title> Crear pedido</title>
+<title>Editar Perfil</title>
 {%endblock title_pagina%}
 
 {% block mi_contenido%}
 <a class="navbar-brand" href={% url 'index' %}>Inicio</a>
-<form action={% url "crear_pedido" %} method="POST">
+<form action={% url "editar_perfil" %} method="POST">
     {% csrf_token %}
     <table>
-    {{formulario}}
+        {{formulario}}
     </table>
-    <button>Crear</button>
+    <button>Editar</button>
 </form>
 {% endblock mi_contenido%}

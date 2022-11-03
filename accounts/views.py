@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login
-from accounts.forms import MiFormularioDeCreacion
+from accounts.forms import MiFormularioDeCreacion, EditarPerfilFormulario
+from django.contrib.auth.decorators import login_required
+
 
 def mi_login(request):
     
@@ -17,6 +19,7 @@ def mi_login(request):
     
     return render(request, 'accounts/login.html', {'formulario': formulario})
 
+
 def registrar(request):
     
     if request.method == 'POST':
@@ -30,6 +33,12 @@ def registrar(request):
     
     return render(request, 'accounts/registrar.html', {'formulario': formulario})
 
+@login_required
 def perfil(request):
     
     return render(request, 'accounts/perfil.html', {})
+
+@login_required
+def editar_perfil(request):
+    formulario = 'EditarPerfilFormulario'
+    return render(request, 'accounts/editar_perfil.html', {'formulario': formulario})
