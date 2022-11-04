@@ -2,7 +2,6 @@ from dataclasses import fields
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django import forms
 
 
 class MiFormularioDeCreacion(UserCreationForm):
@@ -16,8 +15,9 @@ class MiFormularioDeCreacion(UserCreationForm):
         fields = ['username','email','password1','password2']
         help_texts = {key: '' for key in fields}
         
-class EditarPerfilFormulario():
+class EditarPerfilFormulario(forms.Form):
     email = forms.CharField()
     first_name = forms.CharField(label='Nombre')
     last_name = forms.CharField(label='Apellido')
+    avatar = forms.ImageField(required=False)
      

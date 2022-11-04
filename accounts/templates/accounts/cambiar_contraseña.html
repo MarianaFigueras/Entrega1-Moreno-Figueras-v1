@@ -1,16 +1,16 @@
 {% extends 'home/base.html' %}
 
 {%block title_pagina%}
-<title>Editar Perfil</title>
+<title>Cambiar contraseña</title>
 {%endblock title_pagina%}
 
 {% block mi_contenido%}
 <a class="navbar-brand" href={% url 'index' %}>Inicio</a>
-<form action={% url "editar_perfil" %} method="POST" enctype='multipart/form-data'>
+<form action={% url "cambiar_contraseña" %} method="POST">
     {% csrf_token %}
     <table>
-        {{formulario}}
+        {{form}}
     </table>
-    <button>Editar</button>
+    <button>Cambiar</button>
 </form>
 {% endblock mi_contenido%}
