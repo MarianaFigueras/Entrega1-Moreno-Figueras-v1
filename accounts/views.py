@@ -71,7 +71,7 @@ def editar_perfil(request):
          )
     return render(request, 'accounts/editar_perfil.html', {'formulario': formulario})
 
-class CambiarContraseña(LoginRequiredMixin, PasswordChangeView):
-    template_name: 'accounts/cambiar_contraseña.html'
-    success_url: '/accounts/perfil/'
-    form_class: MiCambioDePassword
+class CambiarContrasenia(LoginRequiredMixin, PasswordChangeView):
+    template_name = 'accounts/cambiar_contrasenia.html'
+    success_url = '/accounts/perfil/'
+    form_class = MiCambioDePassword

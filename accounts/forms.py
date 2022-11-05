@@ -8,8 +8,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 class MiFormularioDeCreacion(UserCreationForm):
     
     email = forms.EmailField()
-    password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repetir Contraseña', widget=forms.PasswordInput)
+    password1 = forms.CharField(label='Contrasenia', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Repetir Contrasenia', widget=forms.PasswordInput)
     
     class Meta:
         model = User
@@ -23,9 +23,9 @@ class EditarPerfilFormulario(forms.Form):
     avatar = forms.ImageField(required=False)
      
 class MiCambioDePassword(PasswordChangeForm):
-    old_password = forms.CharField(label='Contraseña vieja', widget=forms.PasswordInput)
-    new_password1 = forms.CharField(label='Contraseña nueva', widget=forms.PasswordInput)
-    new_password2 = forms.CharField(label='Repetir Contraseña nueva', widget=forms.PasswordInput)
+    old_password = forms.CharField(label='Contrasenia vieja', widget=forms.PasswordInput)
+    new_password1 = forms.CharField(label='Contrasenia nueva', widget=forms.PasswordInput)
+    new_password2 = forms.CharField(label='Repetir Contrasenia nueva', widget=forms.PasswordInput)
     
     class Meta:
         model = User
