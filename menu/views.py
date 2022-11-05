@@ -49,18 +49,6 @@ def crear_plato(request):
     return render(request,'menu/crear_plato.html', {'formulario': formulario})
 
 
-
-# class ListaPlatos(ListView):
-#     model = Plato
-#     template_name = 'menu/ver_platos_cbv.html'
-    
-# class CrearPlato(CreateView):
-#     model = Plato
-#     succes_url = 'menu/'
-#     template_name = 'menu/crear_plato_cbv.html'
-#     fields = ['tipo_plato', 'nombre_plato', 'precio', 'fecha_creacion']
-
-
 class EditarPlato(LoginRequiredMixin, UpdateView):
     model = Plato
     success_url = '/menu/menu/'
