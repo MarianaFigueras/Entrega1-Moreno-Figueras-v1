@@ -1,3 +1,6 @@
+Video
+https://drive.google.com/file/d/1gUnZQ1pK-Z4rFF-FwA3za3eP7-G8Srh9/view?usp=share_link
+
 integrantes del grupo: 
 Luis Moreno - Mariana Figueras
 En pestaña 'About' hay una breve reseña nuestra.
@@ -14,7 +17,6 @@ Para eliminar y editar plato se debe tener un usuario registrado. El detalle de 
 
 Dentro de la pagina puede realizar las siguientes funciones:
 Registrarse, le solicita información al usuario como nombre, email, contraseña y que repita su contraseña nuevamente de esa manera crea un perfil, luego de registrase se dirige a la ventana de Iniciar Sesion la cual le solicita el nombre de usuario que a seleccionado y su contraseña, al ingresar el usuario puede ver que esta logueado ya que en la ventana puede visualizar su nombre usuario con el que se registro, al ingresar en el boton donde esta su nombre de usuario, lo lleva a la ventana donde puede visualizar toda su información, en esta tiene dos botones donde le permite bien sea Editar su informacion o Cambiar su contraseña, de ingresar en Editar su información a parte de la informacion que tiene como usuario para cambiar como lo es el nombre, apellido, email, tiene una opción donde puede asignarle una Imagen a su perfil, la cual se llama Avatar, la misma a cargarla se mostrara al momento que el usuario desee ver su informacion nuevamente, luego de realizar todo lo que desea dentro de la Web, tiene un boton para Cerrar Sesión y en el mismo finaliza su recorrido, enviandolo a una ventana donde le dice que a Cerrado Sesion Correctamente y un boton para ir nuevamente al Inicio de la pagina. 
-
 
 
 
